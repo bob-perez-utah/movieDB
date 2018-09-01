@@ -3,41 +3,44 @@ var movies = [
       {
         title: "In Bruges",
         rating: 5,
-        seen: true
+        hasWatched: true
       },
     
 
     {
         title: "Frozen",
         rating: 4.5,
-        seen: false
+        hasWatched: false
     },
 
     {
         title: "Mad Max Fury Road",
         rating: 5,
-        seen: true
+        hasWatched: true
     },
     {
         title: "Les Miserables",
         rating: 3.5,
-        seen: false
+        hasWatched: false
     }
 ]
-    firstSeenString = "You have watched ";
-    trueString = "You have seen ";
-    falseString = "You have not seen ";
-    starString = " stars";
-    firstObjectIndex = 0;
 
-for (var i = 0; i < movies.length; i++) {
-    if (i === firstObjectIndex) {
-        console.log(firstSeenString + "\"" + movies[i].title + "\"" + " - " + movies[i].rating + starString);
-    }
-    else if (movies[i].seen === true) {
-        console.log(trueString + "\"" + movies[i].title + "\"" + " - " + movies[i].rating + starString);
-    } else {
-        console.log(falseString + "\"" + movies[i].title + "\"" + " - " + movies[i].rating + starString);
-    }
+    movies.forEach(function(movie) {
+        console.log(buildString(movie));
+    })
+    
 
+function buildString(movie) {
+    var result = "You have ";
+        if (movie.hasWatched) {
+            result += "watched ";
+            
+        } else {
+            result += "not seen ";
+            
+        }
+
+        result += "\"" + movie.title + "\" = ";
+        result += movie.rating + " stars";
+    return result;
 }
